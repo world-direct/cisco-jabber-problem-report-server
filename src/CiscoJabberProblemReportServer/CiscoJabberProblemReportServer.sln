@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscoProblemReportServer", "CiscoProblemReportServer\CiscoProblemReportServer.csproj", "{771C1C43-7B64-40C7-A94C-4B3962F93A46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCCE5767-242D-4309-8168-EA8DAD78E856}
+	EndGlobalSection
+EndGlobal
