@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NLog;
 
-namespace CiscoProblemReportServer.Controllers
+namespace CiscoJabberProblemReportServer.Controllers
 {
     public class ProblemRPTController : Controller
     {
@@ -36,7 +33,6 @@ namespace CiscoProblemReportServer.Controllers
                     ? System.Web.HttpContext.Current.Request.Files[0]
                     : null;
 
-                _logger.Trace($"Upload file name is `{file}`.");
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
@@ -47,7 +43,7 @@ namespace CiscoProblemReportServer.Controllers
                         _destinationDirectory,
                         fileName
                     );
-                    _logger.Debug($"Writing file to {path}.");
+                    _logger.Debug($"Trying to write file to `{path}`.");
                     file.SaveAs(path);
                 }
                 else
