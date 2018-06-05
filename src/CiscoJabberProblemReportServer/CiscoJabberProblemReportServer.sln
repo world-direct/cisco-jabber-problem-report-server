@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscoJabberProblemReportServer", "CiscoJabberProblemReportServer\CiscoJabberProblemReportServer.csproj", "{771C1C43-7B64-40C7-A94C-4B3962F93A46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscoJabberProblemReportServerTests.Unit", "CiscoJabberProblemReportServerTests.Unit\CiscoJabberProblemReportServerTests.Unit.csproj", "{63B90A60-2368-4371-ADEF-2C75D6134904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{771C1C43-7B64-40C7-A94C-4B3962F93A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B90A60-2368-4371-ADEF-2C75D6134904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B90A60-2368-4371-ADEF-2C75D6134904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B90A60-2368-4371-ADEF-2C75D6134904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B90A60-2368-4371-ADEF-2C75D6134904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

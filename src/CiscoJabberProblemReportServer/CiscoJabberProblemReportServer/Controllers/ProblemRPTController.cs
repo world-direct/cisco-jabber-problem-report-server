@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using NLog;
 
@@ -10,10 +11,12 @@ namespace CiscoJabberProblemReportServer.Controllers
     {
         private readonly string _destinationDirectory;
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly Regex _uploadeeRegex;
 
         public ProblemRPTController()
         {
             _destinationDirectory = ConfigurationManager.AppSettings.Get("ProblemUploadDestinationDirectory");
+            _uploadeeRegex = new Regex(ConfigurationManager.AppSettings.Get("UploadeeRegexExpr"));
         }
 
         // GET: ProblemRPT
@@ -38,6 +41,8 @@ namespace CiscoJabberProblemReportServer.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     _logger.Debug($"Received incoming file `{fileName}`");
 
+                    ValidateFileName(fileName);
+
                     _logger.Trace($"Combining path in order to write file to output directory");
                     var path = Path.Combine(
                         _destinationDirectory,
@@ -59,6 +64,19 @@ namespace CiscoJabberProblemReportServer.Controllers
                 _logger.Error(e, "Unhandled exception while trying to process new problem report");
                 throw;
             }
+        }
+
+        public void ValidateFileName(string fileName)
+        {
+            _logger.Debug($"Validating file name `{fileName}` against regex `{_uploadeeRegex}");
+            var isMatch = _uploadeeRegex.IsMatch(fileName);
+            if (!isMatch)
+            {
+                _logger.Warn($"File name `{fileName}` does not match regex `{_uploadeeRegex}` - throwing exception");
+                throw new ArgumentException(nameof(fileName));
+            }
+
+            _logger.Info($"File name `{fileName}` is valid, proceeding...");
         }
     }
 }
