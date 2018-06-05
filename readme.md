@@ -42,13 +42,17 @@ Note that already existing problem reports are overridden if a new file gets upl
 	```
 
 ## Testing
-You can test the script by adapting the following request to your liking:
+You can test the script by (1) either using the built-in upload functionality by browsing to `http://localhost:26456/ProblemRPT` or (2) adapting the following request to your liking:
 ```
-curl -X POST -F 'zipFileName=@c:\temp\test.txt' http://localhost:26456/ProblemRPT/UploadCiscoProblemRPT
+curl -X POST -F 'zipFileName=@c:\temp\Jabber-iOS-12.0.0.261399-20180522_224538.zip.esc' http://localhost:26456/ProblemRPT/UploadCiscoProblemRPT
 ```
+
+Note that the file name needs to match the regex defined in `~/Config/Operations.config > UploadeeRegexExpr` (usually: `Jabber-.*.zip.e[ns][ck]`) as upload is prohibited otherwise.
 
 ## Troubleshooting
 * Make sure that your App Pool user has permissions to create files in the configured target directory
+* If you change the config you have to restart the app pool for the changes to take effect
+* Make sure your uploaded file matches the regex that is used for validation which is defined in `~/Config/Operations.config > UploadeeRegexExpr` (usually: `Jabber-.*.zip.e[ns][ck]`)
 * Check the `~/Logs` directory to see what's going wrong and why
 * Install [Loginator](https://github.com/dabeku/Loginator) and re-do your failing requests, it should provide trace logs that should help you troubleshoot
 
