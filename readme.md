@@ -1,5 +1,14 @@
 # Cisco Jabber Problem Reporting Server
 
+* [Cisco Jabber Problem Reporting Server](#cisco-jabber-problem-reporting-server)
+  * [TL;DR](#tldr)
+  * [Installation Instructions](#installation-instructions)
+  * [Configuration Instructions](#configuration-instructions)
+  * [Testing](#testing)
+  * [Troubleshooting](#troubleshooting)
+  * [Further references](#further-references)
+
+
 ## TL;DR
 
 Provides a simple mechanism to allow jabber problem reports (PRT) to be uploaded; in order to accomplish this the web server listens for incoming POST requests that have a `multipart/form-data` content-type. Any received file that is smaller than 3 MB (configurable) is read by the server and stored in a destination as specified in the configuration.
@@ -39,7 +48,7 @@ Note that already existing problem reports are overridden if a new file gets upl
         ```xml
         <!-- max request length: https://stackoverflow.com/a/3853785 -->
         <system.web>
-            <httpRuntime targetFramework="4.6.1" maxRequestLength="3072" /> <!-- 3 MB = 3072 kB; use e.g. http://whatsabyte.com/P1/byteconverter.htm for conversion; .NET default: 4MB -->
+            <httpRuntime maxRequestLength="3072" /> <!-- 3 MB = 3072 kB; use e.g. http://whatsabyte.com/P1/byteconverter.htm for conversion; .NET default: 4MB -->
         </system.web>
         <system.webServer>
         <security>
@@ -62,6 +71,10 @@ Note that the file name needs to match the regex defined in `~/Config/Operations
 
 ## Troubleshooting
 
+* Development environment
+  * try running Visual Studio as Administrator in case debugging etc. fails
+  * maku sure you have [configured](#configuration-instructions) your environment correctly
+  * ensure that the configured `ProblemUploadDestinationDirectory` directory exists
 * Make sure that your App Pool user has permissions to create files in the configured target directory
 * If you change the config you have to restart the app pool for the changes to take effect
 * Make sure your uploaded file matches the regex that is used for validation which is defined in `~/Config/Operations.config > UploadeeRegexExpr` (usually: `Jabber-.*.zip.e[ns][ck]`)
